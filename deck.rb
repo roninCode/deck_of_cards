@@ -13,9 +13,35 @@ class Card
   end
 
   def make_multiple_choice
-    right_answer = answer
-    wrong_answer 
-
+    if question == "What is the capital of Illinois?"
+      p "What is the capital of Illinois?"
+      p "Type A for Springfield, B for Albany, C for Boston"
+      input = gets.chomp
+      if input.downcase == "a"
+        p "Correct!"
+      else
+        p "Incorrect!!"
+      end
+    elsif question == "What is the capital of New York?"
+      p "What is the capital of New York?"
+      p "Type A for Springfield, B for Albany, C for Boston"
+      input = gets.chomp
+      if input.downcase == "b"
+        p "Correct!"
+      else
+        p "Incorrect!!"
+      end
+    elsif question == "What is the capital of Florida?"
+      p "What is the capital of Florida?"
+      p "Type A for Springfield, B for Albany, C for Talahasse"
+      input = gets.chomp
+      if input.downcase == "c"
+        p "Correct!"
+      else
+        p "Incorrect!!"
+      end
+    end 
+  end
 end
 
 class Deck
@@ -40,11 +66,11 @@ class Deck
   end
 end
 
-# trivia_data = {
-#   "What is the capital of Illinois?" => "Springfield",
-#   "Is Africa a country or a continent?" => "Continent",
-#   "Tug of war was once an Olympic event. True or false?" => "True"
-# }
+trivia_data = {
+  "What is the capital of Illinois?" => "Springfield",
+  "Is Africa a country or a continent?" => "Continent",
+  "Tug of war was once an Olympic event. True or false?" => "True"
+}
 
 multiple_choice = {
   "What is the capital of Illinois?" => [{"Springfield" => true, "Boston" => false, "New York" => false}],
@@ -52,19 +78,27 @@ multiple_choice = {
   "What is the capital of Florida?" => [{"Miami" => false, "Talahasse" => true, "Orlando" => false }]
 }
 
+
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
+first_card = Card.new("What is the capital of Illinois?", "Springfield")
+first_card.make_multiple_choice
+second_card = Card.new("What is the capital of New York?", "Albany")
+second_card.make_multiple_choice
+third_card = Card.new("What is the capital of Florida?", "Talahasse")
+third_card.make_multiple_choice
+
 # p deck.trivia_data
 # p deck.remaining_cards
 # deck.draw_card
 # deck.draw_card
 
-while deck.remaining_cards > 0
-  card = deck.draw_card # card is an instance of the Card class
-  puts card.question
-  user_answer = gets.chomp
-  if user_answer.downcase == card.answer.downcase
-    puts "Correct!"
-  else
-    puts "Incorrect!"
-  end
-end
+# while deck.remaining_cards > 0
+#   card = deck.draw_card # card is an instance of the Card class
+#   puts card.question
+#   user_answer = gets.chomp
+#   if user_answer.downcase == card.answer.downcase
+#     puts "Correct!"
+#   else
+#     puts "Incorrect!"
+#   end
+# end
