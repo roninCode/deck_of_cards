@@ -11,6 +11,11 @@ class Card
     @question = question
     @answer = answer
   end
+
+  def make_multiple_choice
+    right_answer = answer
+    wrong_answer 
+
 end
 
 class Deck
@@ -35,10 +40,16 @@ class Deck
   end
 end
 
-trivia_data = {
-  "What is the capital of Illinois?" => "Springfield",
-  "Is Africa a country or a continent?" => "Continent",
-  "Tug of war was once an Olympic event. True or false?" => "True"
+# trivia_data = {
+#   "What is the capital of Illinois?" => "Springfield",
+#   "Is Africa a country or a continent?" => "Continent",
+#   "Tug of war was once an Olympic event. True or false?" => "True"
+# }
+
+multiple_choice = {
+  "What is the capital of Illinois?" => [{"Springfield" => true, "Boston" => false, "New York" => false}],
+  "What is the capital of New York?" => [{"Springfield" => false, "Albany" => true, "Rochester" => false}],
+  "What is the capital of Florida?" => [{"Miami" => false, "Talahasse" => true, "Orlando" => false }]
 }
 
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
